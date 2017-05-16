@@ -18,8 +18,3 @@ def ovsfGenerator(numberOfMobile):
         column=newColumn
     return column
 
-
-test=ovsfGenerator(7)
-
-for i in test:
-    print(bin(i))
