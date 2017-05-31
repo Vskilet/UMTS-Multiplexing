@@ -7,7 +7,7 @@ def bitToString(a):
 
 #function which is decoding a signal in the global signal
 def demodulateSignal(sig, cellPhone):
-    k=0
+    
     multipliedSignal=[]
     for i in sig :
         if(bitToString(cellPhone.ovsfCode)[sig.index(i)]=='1'):
@@ -18,9 +18,11 @@ def demodulateSignal(sig, cellPhone):
     for i in multipliedSignal:
         value+=i
     if (value > 0):
-        return True
+        return 1
+    elif(value==0):
+        return 0
     else:
-        return False
+        return -1
 
 #generate Codes
 listCodes = ovsfGenerator(4)
@@ -43,7 +45,7 @@ for i in range(0,4):
 print(signal)
 
 #cheating function in order to test if the demodulation fuction works
-#Actualy, with this signal the function may return True False False True, True is 1 and False is "You know..."
+#Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
 signal=[0,0,0,4]
 
 #signal=[0,0,0,4]
