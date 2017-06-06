@@ -44,28 +44,27 @@ listMobile = [Mobile(str(i),listCodes[i]) for i in range(0,MOBILE_NUMBER) ]
 print(listMobile)
 for mobile in listMobile :
     print(mobile)
+#function who generate signal
+def generateGlobalSignal():
+    signal = [0 for x in range(0,len(bitToString(listMobile[0].ovsfCode)))]
+    #generate the global signal with the mobiles ovsf codes 
+    print(len(bitToString(listMobile[0].ovsfCode)))
+    for i in range(0,len(bitToString(listMobile[0].ovsfCode))):
+        for mobile in listMobile :
+            if(mobile.message !=0):
+                if(mobile.message == 1):
+                    bits=bitToString(mobile.ovsfCode)
+                if(mobile.message == -1):
+                    bits=conjugue(bitToString(mobile.ovsfCode))
+                if(bits[i]=='0'):
+                    signal[i]-=1
+                else:
+                    signal[i]+=1
+    #signal=signal[::-1]
+    print(signal)
+    return signal
 
-
-signal = [0 for x in range(0,len(bitToString(listMobile[0].ovsfCode)))]
-#generate the global signal with the mobiles ovsf codes (all mobiles send 1 for the moment
-print(len(bitToString(listMobile[0].ovsfCode)))
-for i in range(0,len(bitToString(listMobile[0].ovsfCode))):
-    for mobile in listMobile :
-        if(mobile.message !=0):
-            if(mobile.message == 1):
-                bits=bitToString(mobile.ovsfCode)
-            if(mobile.message == -1):
-                bits=conjugue(bitToString(mobile.ovsfCode))
-            if(bits[i]=='0'):
-                signal[i]-=1
-            else:
-                signal[i]+=1
-#signal=signal[::-1]
-print(signal)
-
-#cheating function in order to test if the demodulation fuction works
-#Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
-#
+signal=generateGlobalSignal()
 for i in listMobile :
     print(demodulateSignal(signal,i))
 
