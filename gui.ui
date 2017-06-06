@@ -45,6 +45,20 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="4" column="0">
+      <widget class="QLabel" name="LabelEncodeMessage">
+       <property name="text">
+        <string>Encode Message</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="LabelTextEncodeMessage">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="LabelNumber">
        <property name="text">
@@ -69,10 +83,24 @@
        </property>
       </widget>
      </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="LabelDecodeMessage">
+       <property name="text">
+        <string>Decode Message</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="LabelTextDecodeMessage">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="ButtonNewPhone">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -85,7 +113,7 @@
     <string>New phone</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="ButtonDeletePhone">
    <property name="geometry">
     <rect>
      <x>800</x>
