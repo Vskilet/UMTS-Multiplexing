@@ -24,6 +24,8 @@ if __name__ == "__main__":
         print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
 
+    comboboxListener()
+
     ui.ComboBoxNumber.activated.connect(comboboxListener)
 
     signal = [0 for x in range(0, len(bitToString(listMobile[0].ovsfCode)))]
