@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>767</width>
-    <height>456</height>
+    <width>962</width>
+    <height>578</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,17 +18,17 @@
     <rect>
      <x>0</x>
      <y>10</y>
-     <width>531</width>
-     <height>441</height>
+     <width>631</width>
+     <height>551</height>
     </rect>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>540</x>
+     <x>660</x>
      <y>10</y>
-     <width>221</width>
+     <width>291</width>
      <height>251</height>
     </rect>
    </property>
@@ -40,7 +40,7 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>201</width>
+      <width>261</width>
       <height>181</height>
      </rect>
     </property>
@@ -71,6 +71,32 @@
      </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>270</y>
+     <width>88</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>New phone</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>270</y>
+     <width>101</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete phone</string>
+   </property>
   </widget>
  </widget>
  <resources/>
