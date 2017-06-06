@@ -37,7 +37,7 @@ def demodulateSignal(sig, cellPhone):
     else:
         return -1
 
-#generate Codes
+#generate Codes...
 listCodes = ovsfGenerator(MOBILE_NUMBER)
 #generate a testing list of mobile phones
 listMobile = [Mobile(str(i),listCodes[i]) for i in range(0,MOBILE_NUMBER) ]
