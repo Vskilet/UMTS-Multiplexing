@@ -1,7 +1,7 @@
 from ovsfGenerator import ovsfGenerator
 from Mobile import Mobile
 
-MOBILE_NUMBER=4
+MOBILE_NUMBER=30
 
 #convert a number in a string of bits
 def bitToString(a):
@@ -19,23 +19,17 @@ def conjugue(a):
 
 #function which is decoding a signal in the global signal
 def demodulateSignal(sig, cellPhone):
-    
     multipliedSignal=[]
+    test=0
     for i in sig :
-        print (i)
-        if(bitToString(cellPhone.ovsfCode)[sig.index(i)]=='1'):
+        if(bitToString(cellPhone.ovsfCode)[test]=='1'):
             multipliedSignal.append(i)
-            #print('1',end='')
         else:
             multipliedSignal.append(-i)
-            #print('-1', end='')
+        test+=1
     value=0
-    #print()
-    #print(bitToString(cellPhone.ovsfCode))
-    #print(multipliedSignal)
     for i in multipliedSignal:
         value+=i
-    print("####" + str(value))
     if (value > 0):
         return 1
     elif(value==0):
@@ -72,7 +66,6 @@ print(signal)
 #cheating function in order to test if the demodulation fuction works
 #Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
 #
-signal=[0,0,2,2]
 for i in listMobile :
     print(demodulateSignal(signal,i))
 
