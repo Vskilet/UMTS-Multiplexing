@@ -7,6 +7,8 @@ from initializeCommunications import *
 def comboboxListener():
     mobile_id = ui.ComboBoxNumber.currentText()
     ui.LabelTextOVSF.setText(bin(listMobile[int(mobile_id)].ovsfCode))
+#    ui.LabelTextDecodeMessage.setText(bin(demodulateSignal(signal, mobile_id)))
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -23,10 +25,6 @@ if __name__ == "__main__":
     for mobile in listMobile:
         print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
-
-    comboboxListener()
-
-    ui.ComboBoxNumber.activated.connect(comboboxListener)
 
     signal = [0 for x in range(0, len(bitToString(listMobile[0].ovsfCode)))]
     # generate the global signal with the mobiles ovsf codes (all mobiles send 1 for the moment
@@ -50,5 +48,10 @@ if __name__ == "__main__":
     #
     for i in listMobile:
         print(demodulateSignal(signal, i))
+    
+    
+    comboboxListener()
 
+    ui.ComboBoxNumber.activated.connect(comboboxListener)
+    
     sys.exit(app.exec_())
