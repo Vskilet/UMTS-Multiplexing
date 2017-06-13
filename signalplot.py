@@ -17,7 +17,9 @@ def plot(signal=[-1, 0, 1]):
         else:
             s = np.zeros_like(t)
 
-        plt.plot(t, s, 'b')
+        plt.plot(t, s, color='b')
         i += 1
 
-    plt.savefig("plot.png", format="png")
+    plt.ylabel('Amplitude')
+    plt.xlabel('Time')
+    plt.savefig("plot.png", format="png", transparent=True)
