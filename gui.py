@@ -13,12 +13,11 @@ def comboboxListener():
     ui.LabelTextOVSF.setText(bin(listMobile[int(mobile_id)].ovsfCode))
     ui.LabelTextDecodeMessage.setText(str(listMobile[int(mobile_id)].message))
 
-def buttonNewPhoneListener(total_mobile):
-    initialization(1,total_mobile)
+def buttonNewSimulationListener():
+    #ui.LineEditInterferencesAmplitude.setText(ui.LineEditNbPhone.displayText())
+    initialization(ui.LineEditNbPhone.displayText())
 
-def initialization(nb_mobile_ad, nb_mobile):
-    total_nb_mob = nb_mobile_ad + nb_mobile
-    print("Coucou "+ str(total_nb_mob) + "\n")
+def initialization(total_nb_mob):
     # generate Codes
     listCodes = ovsfGenerator(total_nb_mob)
     # generate a testing list of mobile phones
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     ui = loadUi('gui.ui')
     ui.show()
 
-    signal, listMobile = initialization(MOBILE_NUMBER,0)
+    signal, listMobile = initialization(MOBILE_NUMBER)
 
     # cheating function in order to test if the demodulation fuction works
     # Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
@@ -65,7 +64,7 @@ if __name__ == "__main__":
     comboboxListener()
 
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    ui.ButtonNewPhone.clicked.connect(buttonNewPhoneListener, MOBILE_NUMBER)
+    ui.ButtonNewSimulation.clicked.connect(buttonNewSimulationListener)
 
     # Affichage du signal
 
