@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import io
 
 
 def plot(signal=[-1, 0, 1]):
@@ -19,7 +20,4 @@ def plot(signal=[-1, 0, 1]):
         plt.plot(t, s)
         i += 1
 
-    plt.show()
-    fig = plt.gcf()
-    # plt.show() <- don't show window!
-    return fig
+    plt.savefig("plot.png", format="png")
