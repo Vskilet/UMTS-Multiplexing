@@ -45,17 +45,10 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="4" column="0">
-      <widget class="QLabel" name="LabelEncodeMessage">
+     <item row="3" column="0">
+      <widget class="QLabel" name="LabelOVSF">
        <property name="text">
-        <string>Encode Message</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLabel" name="LabelTextEncodeMessage">
-       <property name="text">
-        <string/>
+        <string>OVSF Code</string>
        </property>
       </widget>
      </item>
@@ -66,32 +59,18 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="LabelOVSF">
-       <property name="text">
-        <string>OVSF Code</string>
-       </property>
-      </widget>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="LineEditNbPhone"/>
      </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="ComboBoxNumber"/>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLabel" name="LabelTextOVSF">
+     <item row="4" column="1">
+      <widget class="QLabel" name="LabelTextDecodeMessage">
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="LabelDecodeMessage">
-       <property name="text">
-        <string>Decode Message</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="LabelTextDecodeMessage">
+     <item row="3" column="1">
+      <widget class="QLabel" name="LabelTextOVSF">
        <property name="text">
         <string/>
        </property>
@@ -104,10 +83,13 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
-      <widget class="QPushButton" name="ButtonDeletePhone">
+     <item row="2" column="1">
+      <widget class="QComboBox" name="ComboBoxNumber"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="LabelDecodeMessage">
        <property name="text">
-        <string>Delete phone</string>
+        <string>Decode Message</string>
        </property>
       </widget>
      </item>
