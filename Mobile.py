@@ -4,7 +4,9 @@ class Mobile :
     def __init__(self, id, ovsf):
         self.ovsfCode = ovsf
         self.identifier = id
-        self.message = random.randint(-1,1)
+        self.message = random.randint(0,1)
+        if (self.message == 0):
+            self.message =-1
 
          
 
