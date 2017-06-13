@@ -4,24 +4,25 @@ from PyQt5.uic import loadUi
 
 from initializeCommunications import *
 
+MOBILE_NUMBER = 5
+
 def comboboxListener():
     mobile_id = ui.ComboBoxNumber.currentText()
     ui.LabelTextOVSF.setText(bin(listMobile[int(mobile_id)].ovsfCode))
-#    ui.LabelTextDecodeMessage.setText(bin(demodulateSignal(signal, mobile_id)))
+    ui.LabelTextDecodeMessage.setText(str(listMobile[int(mobile_id)].message))
 
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    ui = loadUi('gui.ui')
-    ui.show()
-
-    MOBILE_NUMBER = 250
-
+def buttonNewPhoneListener(total_mobile):
+    initialization(1,total_mobile)
+   
+def initialization(nb_mobile_ad, nb_mobile):
+    total_nb_mob = nb_mobile_ad + nb_mobile
     # generate Codes
-    listCodes = ovsfGenerator(MOBILE_NUMBER)
+    listCodes = ovsfGenerator(total_nb_mob)
     # generate a testing list of mobile phones
-    listMobile = [Mobile(str(i), listCodes[i]) for i in range(0, MOBILE_NUMBER)]
+    listMobile = [Mobile(str(i), listCodes[i]) for i in range(0, total_nb_mob)]
+    
     print(listMobile)
+    ui.ComboBoxNumber.clear()
     for mobile in listMobile:
         print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
@@ -42,6 +43,14 @@ if __name__ == "__main__":
                     signal[i] += 1
     # signal=signal[::-1]
     print(signal)
+    return total_nb_mob
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ui = loadUi('gui.ui')
+    ui.show()
+    
+    total_mobile = initialization(MOBILE_NUMBER,0)
 
     # cheating function in order to test if the demodulation fuction works
     # Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
@@ -53,5 +62,5 @@ if __name__ == "__main__":
     comboboxListener()
 
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    
+    ui.ButtonNewPhone.clicked.connect(buttonNewPhoneListener, total_mobile)
     sys.exit(app.exec_())
