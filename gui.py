@@ -46,14 +46,14 @@ def initialization(nb_mobile_ad, nb_mobile):
                     signal[i] += 1
     # signal=signal[::-1]
     print(signal)
-    return total_nb_mob
+    return signal, listMobile
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = loadUi('gui.ui')
     ui.show()
 
-    total_mobile = initialization(MOBILE_NUMBER,0)
+    signal, listMobile = initialization(MOBILE_NUMBER,0)
 
     # cheating function in order to test if the demodulation fuction works
     # Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     comboboxListener()
 
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    ui.ButtonNewPhone.clicked.connect(buttonNewPhoneListener, total_mobile)
+    ui.ButtonNewPhone.clicked.connect(buttonNewPhoneListener, MOBILE_NUMBER)
 
     # Affichage du signal
 
