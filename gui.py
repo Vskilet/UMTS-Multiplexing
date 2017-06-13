@@ -16,6 +16,7 @@ def buttonNewPhoneListener(total_mobile):
    
 def initialization(nb_mobile_ad, nb_mobile):
     total_nb_mob = nb_mobile_ad + nb_mobile
+    print("Coucou "+ str(total_nb_mob) + "\n")
     # generate Codes
     listCodes = ovsfGenerator(total_nb_mob)
     # generate a testing list of mobile phones
