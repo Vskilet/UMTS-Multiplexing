@@ -5,6 +5,7 @@ class Node:
         self.l = None
         self.r = None
         self.v = val
+        self.used=False
 
 class Tree:
     def __init__(self):

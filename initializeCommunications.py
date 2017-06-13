@@ -1,7 +1,8 @@
 from ovsfGenerator import ovsfGenerator
 from Mobile import Mobile
 from random import randint
-MOBILE_NUMBER=4
+import binascii
+MOBILE_NUMBER=130
 
 #convert a number in a string of bits
 def bitToString(a):
@@ -49,7 +50,7 @@ for mobile in listMobile :
 def generateGlobalSignal():
     signal = [0 for x in range(0,len(bitToString(listMobile[0].ovsfCode)))]
     #generate the global signal with the mobiles ovsf codes 
-    print(len(bitToString(listMobile[0].ovsfCode)))
+    #print(len(bitToString(listMobile[0].ovsfCode)))
     for i in range(0,len(bitToString(listMobile[0].ovsfCode))):
         for mobile in listMobile :
             if(mobile.message !=0):
@@ -65,6 +66,23 @@ def generateGlobalSignal():
     print(signal)
     return signal
 
+def sendAscii():
+    for j in range(0,len(listMobile[0].binary)):
+        for i in listMobile:
+            i.message=int(i.binary[j])
+            if(i.message==0):
+                i.message=-1
+        signal=generateGlobalSignal()
+        signal=addRandomNoises(signal,3,50)
+        for k in listMobile :
+            if(demodulateSignal(signal,k)==-1):
+                k.received+='0'
+            else:
+                k.received+='1'
+
+
+        
+
 #add random noises in the signal, the amplitude is a number , and the rate is a percentage(0-100) 
 def addRandomNoises(signal, amplitude, rate):
     sig=[]
@@ -75,13 +93,12 @@ def addRandomNoises(signal, amplitude, rate):
     return sig
 
 
-signal=generateGlobalSignal()
-signal=addRandomNoises(signal, 5, 50)
-print(signal)
+#signal=generateGlobalSignal()
+#signal=addRandomNoises(signal, 5, 50)
+#print(signal)
+
+sendAscii()
 for i in listMobile :
-    print(demodulateSignal(signal,i))
-
- 
-
+    print(i)
 
 
