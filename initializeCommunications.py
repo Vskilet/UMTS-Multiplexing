@@ -2,7 +2,7 @@ from ovsfGenerator import ovsfGenerator
 from Mobile import Mobile
 from random import randint
 import binascii
-MOBILE_NUMBER=130
+MOBILE_NUMBER=4
 
 #convert a number in a string of bits
 def bitToString(a):
