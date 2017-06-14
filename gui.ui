@@ -49,10 +49,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
-      <widget class="QLineEdit" name="LineEditNbPhone"/>
-     </item>
-     <item row="4" column="1">
+     <item row="5" column="1">
       <widget class="QLabel" name="LabelTextDecodeMessage">
        <property name="text">
         <string/>
@@ -69,19 +66,43 @@
      <item row="2" column="1">
       <widget class="QComboBox" name="ComboBoxNumber"/>
      </item>
-     <item row="4" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="LabelDecodeMessage">
        <property name="text">
-        <string>Decode Message</string>
+        <string>Decoded Message</string>
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
+     <item row="7" column="0">
       <widget class="QPushButton" name="ButtonNewSimulation">
        <property name="text">
-        <string>Restart Simulation</string>
+        <string>Simulation Bit</string>
        </property>
       </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="LabelTextDesiredMessage">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="LabelDesired">
+       <property name="text">
+        <string>Desired message</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Simulation Str</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1" rowspan="2">
+      <widget class="QLineEdit" name="LineEditNbPhone"/>
      </item>
     </layout>
    </widget>
@@ -145,13 +166,66 @@
    <property name="geometry">
     <rect>
      <x>8</x>
-     <y>7</y>
+     <y>77</y>
      <width>641</width>
-     <height>561</height>
+     <height>491</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>649</x>
+     <y>449</y>
+     <width>291</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="1" column="0">
+     <widget class="QLabel" name="LabelThroughputTitle">
+      <property name="text">
+       <string>Mean throughput (QPSK) :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="LabelErrorRateTitle">
+      <property name="text">
+       <string>Error rate :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="LabelErrorRate">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="LabelThroughput">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="LabelSignal">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>641</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Signal :</string>
    </property>
   </widget>
  </widget>

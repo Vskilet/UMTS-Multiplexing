@@ -6,19 +6,20 @@ from PyQt5.QtGui import QPixmap, QImage
 from initializeCommunications import *
 import signalplot
 
-MOBILE_NUMBER = 5
-
-def comboboxListener(listMobile):
+MOBILE_NUMBER = 20
+listMobile=[]
+def comboboxListener():
     mobile_id = int(ui.ComboBoxNumber.currentText())
     ui.LabelTextOVSF.setText(bin(listMobile[mobile_id].ovsfCode))
-    ui.LabelTextDecodeMessage.setText(str(listMobile[mobile_id].message))
+    ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal,listMobile[mobile_id])))
+    ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].message))
 
 def buttonNewSimulationListener():
     #ui.LineEditInterferencesAmplitude.setText(ui.LineEditNbPhone.displayText())
     listMobileGenerator(int(ui.LineEditNbPhone.displayText()))
     #printSignal(signal)
 
-def comboBoxGenerate(listMobile):
+def comboBoxGenerate():
     ui.ComboBoxNumber.clear()
     for mobile in listMobile:
         print(mobile)
@@ -27,24 +28,15 @@ def comboBoxGenerate(listMobile):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    listMobile = listMobileGenerator(MOBILE_NUMBER)
     ui = loadUi('gui.ui')
     ui.show()
-
-    listMobile = listMobileGenerator(MOBILE_NUMBER)
-    comboBoxGenerate(listMobile)
+    comboBoxGenerate()
     signal = generateGlobalSignal(listMobile)
-    # cheating function in order to test if the demodulation fuction works
-    # Actualy, with this signal the function may return 1 -1 -1 1, 1 is 1 and -1 is 0 and 0 is nothing
-    #
-    for i in listMobile:
-        print(demodulateSignal(signal, i))
+    comboboxListener()
 
-    comboboxListener(listMobile)
-
-    ui.ComboBoxNumber.activated.connect(comboboxListener(listMobile))
+    ui.ComboBoxNumber.activated.connect(comboboxListener)
     ui.ButtonNewSimulation.clicked.connect(buttonNewSimulationListener)
-
-    #printSignal(signal)
     signalplot.plot(signal)
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
