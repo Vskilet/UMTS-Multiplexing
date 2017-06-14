@@ -109,10 +109,6 @@ def addRandomNoises(signal, amplitude, rate):
 #signal=addRandomNoises(signal, 5, 50)
 #print(signal)
 
-sendAscii()
-for i in listMobile :
-    print(i)
-
 #signal=generateGlobalSignal()
 #signal=addRandomNoises(signal, 5, 50)
 #print(signal)
