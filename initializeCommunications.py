@@ -12,7 +12,7 @@ def conjugue(a):
     conj=""
     for i in a:
         if(i=='0'):
-           conj+='1' 
+           conj+='1'
         else:
             conj+='0'
 
@@ -38,18 +38,22 @@ def demodulateSignal(sig, cellPhone):
     else:
         return -1
 
-#generate Codes...
-listCodes = ovsfGenerator(MOBILE_NUMBER)
-#generate a testing list of mobile phones
-listMobile = [Mobile(str(i),listCodes[i]) for i in range(0,MOBILE_NUMBER) ]
-print(listMobile)
-for mobile in listMobile :
-    print(mobile)
-#function who generate signal
+def listMobileGenerator(mobile_number):
+    #generate Codes...
+    listCodes = ovsfGenerator(mobile_number)
+    #generate a testing list of mobile phones
+    listMobile = [Mobile(str(i),listCodes[i]) for i in range(0,mobile_number) ]
+    print(listMobile)
+    for mobile in listMobile :
+        print(mobile)
+    return listMobile
 
-def generateGlobalSignal():
+
+def generateGlobalSignal(listMobile):
+    #function who generate signal
+
     signal = [0 for x in range(0,len(bitToString(listMobile[0].ovsfCode)))]
-    #generate the global signal with the mobiles ovsf codes 
+    #generate the global signal with the mobiles ovsf codes
     #print(len(bitToString(listMobile[0].ovsfCode)))
     for i in range(0,len(bitToString(listMobile[0].ovsfCode))):
         for mobile in listMobile :
@@ -81,9 +85,9 @@ def sendAscii():
                 k.received+='1'
 
 
-        
 
-#add random noises in the signal, the amplitude is a number , and the rate is a percentage(0-100) 
+
+#add random noises in the signal, the amplitude is a number , and the rate is a percentage(0-100)
 def addRandomNoises(signal, amplitude, rate):
     sig=[]
     for i in signal :
@@ -97,8 +101,4 @@ def addRandomNoises(signal, amplitude, rate):
 #signal=addRandomNoises(signal, 5, 50)
 #print(signal)
 
-sendAscii()
-for i in listMobile :
-    print(i)
-
-
+#sendAscii()
