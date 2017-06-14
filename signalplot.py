@@ -23,3 +23,7 @@ def plot(signal=[-1, 0, 1]):
     plt.ylabel('Amplitude')
     plt.xlabel('Time')
     plt.savefig("plot.png", format="png", transparent=True)
+
+
+def clear():
+    plt.clf()

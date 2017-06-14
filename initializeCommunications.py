@@ -43,9 +43,9 @@ def listMobileGenerator(mobile_number):
     listCodes = ovsfGenerator(mobile_number)
     #generate a testing list of mobile phones
     listMobile = [Mobile(str(i),listCodes[i]) for i in range(0,mobile_number) ]
-    print(listMobile)
-    for mobile in listMobile :
-        print(mobile)
+    # print(listMobile)
+    # for mobile in listMobile :
+        # print(mobile)
     return listMobile
 
 
@@ -67,7 +67,7 @@ def generateGlobalSignal(listMobile):
                 else:
                     signal[i]+=1
     #signal=signal[::-1]
-    print(signal)
+    # print(signal)
     return signal
 
 def sendAscii():

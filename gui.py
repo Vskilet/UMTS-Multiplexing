@@ -17,7 +17,7 @@ def comboboxListener():
     global listMobile
     mobile_id = int(ui.ComboBoxNumber.currentText())
     ui.LabelTextOVSF.setText(bin(listMobile[mobile_id].ovsfCode))
-    print(signal)
+    # print(signal)
     ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal,listMobile[mobile_id])))
     ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].message))
 
@@ -25,19 +25,21 @@ def buttonListener():
     simulation(MOBILE_NUMBER)
 
 def spinnerListener():
+    global MOBILE_NUMBER
     MOBILE_NUMBER = ui.mobileNumber.value()
 
 def comboBoxGenerate():
     global listMobile
     ui.ComboBoxNumber.clear()
     for mobile in listMobile:
-        print(mobile)
+        # print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
 
 def simulation(mobileNumber):
     global MOBILE_NUMBER
     global listMobile
     global signal
+    signalplot.clear()
     MOBILE_NUMBER=mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
     signal = generateGlobalSignal(listMobile)
@@ -56,7 +58,7 @@ def simulation(mobileNumber):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = loadUi('gui.ui')
-    simulation(10)
+    simulation(MOBILE_NUMBER)
 
     ui.show()
 
