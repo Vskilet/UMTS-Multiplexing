@@ -21,9 +21,8 @@ def comboboxListener():
     ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal,listMobile[mobile_id])))
     ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].message))
 
-def buttonNewSimulationListener():
-    #ui.LineEditInterferencesAmplitude.setText(ui.LineEditNbPhone.displayText())
-    simulation(int(ui.LineEditNbPhone.displayText()))
+def spinnerListener():
+    MOBILE_NUMBER = ui.mobileNumber.value()
 
 def comboBoxGenerate():
     global listMobile
@@ -43,11 +42,12 @@ def simulation(mobileNumber):
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    ui.buttonBitSimulation.clicked.connect(buttonNewSimulationListener)
     signalplot.plot(signal)
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
     ui.plotLabel.setPixmap(pixmap)
+    ui.mobileNumber.setValue(MOBILE_NUMBER)
+    ui.mobileNumber.valueChanged.connect(spinnerListener)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
