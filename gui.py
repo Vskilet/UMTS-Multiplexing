@@ -7,7 +7,8 @@ from initializeCommunications import *
 import signalplot
 
 MOBILE_NUMBER = 5
-
+    
+    
 def comboboxListener():
     mobile_id = ui.ComboBoxNumber.currentText()
     ui.LabelTextOVSF.setText(bin(listMobile[int(mobile_id)].ovsfCode))
@@ -15,7 +16,8 @@ def comboboxListener():
 
 def buttonNewSimulationListener():
     #ui.LineEditInterferencesAmplitude.setText(ui.LineEditNbPhone.displayText())
-    initialization(ui.LineEditNbPhone.displayText())
+    initialization(int(ui.LineEditNbPhone.displayText()))
+    #printSignal(signal)
 
 def initialization(total_nb_mob):
     # generate Codes
@@ -65,13 +67,11 @@ if __name__ == "__main__":
 
     ui.ComboBoxNumber.activated.connect(comboboxListener)
     ui.ButtonNewSimulation.clicked.connect(buttonNewSimulationListener)
-
-    # Affichage du signal
-
+    
+    #printSignal(signal)
     signalplot.plot(signal)
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
     ui.plotLabel.setPixmap(pixmap)
-
-
+    
     sys.exit(app.exec_())
