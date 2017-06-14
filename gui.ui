@@ -35,22 +35,15 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <widget class="QLabel" name="LabelOVSF">
+     <item row="8" column="0">
+      <widget class="QPushButton" name="buttonStringSimulation">
        <property name="text">
-        <string>OVSF Code</string>
+        <string>Simulation Str</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="LabelNumber">
-       <property name="text">
-        <string>Number</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="LabelTextDecodeMessage">
+     <item row="4" column="1">
+      <widget class="QLabel" name="LabelTextDesiredMessage">
        <property name="text">
         <string/>
        </property>
@@ -63,9 +56,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="ComboBoxNumber"/>
-     </item>
      <item row="5" column="0">
       <widget class="QLabel" name="LabelDecodeMessage">
        <property name="text">
@@ -73,17 +63,27 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QPushButton" name="ButtonNewSimulation">
+     <item row="5" column="1">
+      <widget class="QLabel" name="LabelTextDecodeMessage">
        <property name="text">
-        <string>Simulation Bit</string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLabel" name="LabelTextDesiredMessage">
+     <item row="2" column="0">
+      <widget class="QLabel" name="LabelNumber">
        <property name="text">
-        <string/>
+        <string>Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="ComboBoxNumber"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QPushButton" name="buttonBitSimulation">
+       <property name="text">
+        <string>Simulation Bit</string>
        </property>
       </widget>
      </item>
@@ -94,15 +94,15 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QPushButton" name="pushButton">
+     <item row="3" column="0">
+      <widget class="QLabel" name="LabelOVSF">
        <property name="text">
-        <string>Simulation Str</string>
+        <string>OVSF Code</string>
        </property>
       </widget>
      </item>
      <item row="7" column="1" rowspan="2">
-      <widget class="QLineEdit" name="LineEditNbPhone"/>
+      <widget class="QSpinBox" name="mobileNumber"/>
      </item>
     </layout>
    </widget>

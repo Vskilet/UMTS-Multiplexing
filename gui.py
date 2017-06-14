@@ -43,7 +43,7 @@ def simulation(mobileNumber):
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    ui.ButtonNewSimulation.clicked.connect(buttonNewSimulationListener)
+    ui.buttonBitSimulation.clicked.connect(buttonNewSimulationListener)
     signalplot.plot(signal)
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
