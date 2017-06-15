@@ -21,9 +21,24 @@ def comboboxListener():
     ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal,listMobile[mobile_id])))
     ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].message))
 
+def comboboxStrListener():
+    global signal
+    global listMobile
+    mobile_id = int(ui.ComboBoxNumber.currentText())
+    ui.LabelTextOVSF.setText(bin(listMobile[mobile_id].ovsfCode))
+    # print(signal)
+    ui.LabelTextDecodeMessage.setText(str(listMobile[mobile_id].unbin()))
+    #try:
+    ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].ascii))
+    #except:
+    #    ui.LabelTextDesiredMessage.setText("errors due to noises...")
+
 def buttonListener():
     simulation(MOBILE_NUMBER)
 
+def buttonStrListener():
+    print("###### test ######")
+    simulationSTR(MOBILE_NUMBER)
 def spinnerListener():
     global MOBILE_NUMBER
     MOBILE_NUMBER = ui.mobileNumber.value()
@@ -54,6 +69,24 @@ def simulation(mobileNumber):
     ui.mobileNumber.setValue(MOBILE_NUMBER)
     ui.mobileNumber.valueChanged.connect(spinnerListener)
     ui.buttonBitSimulation.clicked.connect(buttonListener)
+    ui.buttonStringSimulation.clicked.connect(buttonStrListener)
+
+def simulationSTR(mobileNumber):
+    global MOBILE_NUMBER
+    global listMobile
+    global signal
+    signalplot.clear()
+    MOBILE_NUMBER=mobileNumber
+    listMobile = listMobileGenerator(MOBILE_NUMBER)
+# TODO change 0 and 50 by rate and amplitude of interference
+    sendAscii(listMobile,0,0 )
+    comboBoxGenerate()
+    comboboxListener()
+    ui.ComboBoxNumber.activated.connect(comboboxStrListener)
+    ui.mobileNumber.setValue(MOBILE_NUMBER)
+    ui.mobileNumber.valueChanged.connect(spinnerListener)
+    ui.buttonBitSimulation.clicked.connect(buttonListener)
+    ui.buttonStringSimulation.clicked.connect(buttonStrListener)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

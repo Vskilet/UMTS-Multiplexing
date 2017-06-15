@@ -22,6 +22,8 @@ class Mobile :
         self.ovsfCode = ovsf
     def setId(self, id):
         self.identifier = id
+    def unbin(self):
+        return text_from_bits(self.received)
     def __str__(self):
         if(self.received==''):
             return self.identifier + " my code is " + (bin(self.ovsfCode)) + " "+ "my antena sent "+ str(self.ascii)+" I received nothing for the moment"

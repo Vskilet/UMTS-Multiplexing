@@ -71,14 +71,14 @@ def generateGlobalSignal(listMobile):
     # print(signal)
     return signal
 
-def sendAscii():
+def sendAscii(listMobile,interferenceRate,interferenceAmplitude):
     for j in range(0,len(listMobile[0].binary)):
         for i in listMobile:
             i.message=int(i.binary[j])
             if(i.message==0):
                 i.message=-1
-        signal=generateGlobalSignal()
-        signal=addRandomNoises(signal,3,50)
+        signal=generateGlobalSignal(listMobile)
+        signal=addRandomNoises(signal,interferenceAmplitude,interferenceRate)
         for k in listMobile :
             if(demodulateSignal(signal,k)==-1):
                 k.received+='0'
@@ -91,7 +91,7 @@ def addRandomNoises(signal, amplitude, rate):
     sig=[]
     for i in signal :
         if(randint(0,100)<=rate):
-            i+=randint(-amplitude,amplitude)
+            i=i+randint(-amplitude,amplitude)
         sig.append(i)
     return sig
 
