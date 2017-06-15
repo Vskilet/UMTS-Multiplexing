@@ -28,11 +28,11 @@ def comboboxStrListener():
     mobile_id = int(ui.ComboBoxNumber.currentText())
     ui.LabelTextOVSF.setText(bin(listMobile[mobile_id].ovsfCode))
     # print(signal)
-    ui.LabelTextDecodeMessage.setText(str(listMobile[mobile_id].unbin()))
-    #try:
     ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].ascii))
-    #except:
-    #    ui.LabelTextDesiredMessage.setText("errors due to noises...")
+    try:
+        ui.LabelTextDecodeMessage.setText(str(listMobile[mobile_id].unbin()))
+    except:
+        ui.LabelTextDecodeMessage.setText("errors due to noises...")
 
 def buttonListener():
     simulation(MOBILE_NUMBER)
@@ -83,7 +83,7 @@ def simulationSTR(mobileNumber):
     MOBILE_NUMBER=mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 # TODO change 0 and 50 by rate and amplitude of interference
-    sendAscii(listMobile,0,0 )
+    sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxStrListener)
