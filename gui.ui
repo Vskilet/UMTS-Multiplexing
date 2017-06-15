@@ -120,22 +120,33 @@
      <x>650</x>
      <y>320</y>
      <width>291</width>
-     <height>125</height>
+     <height>128</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="LabelInterferencesRate">
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text">
-       <string>Interferences Rate</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QLabel" name="LabelInterferencesRate">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Interferences Rate</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="LabelTextInterferencesRate">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QSlider" name="SliderInterferencesRate">
@@ -155,17 +166,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="LineEditInterferencesAmplitude">
-      <property name="inputMethodHints">
-       <set>Qt::ImhDigitsOnly</set>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>false</bool>
-      </property>
-     </widget>
+     <widget class="QSpinBox" name="SpinInterferencesAmplitude"/>
     </item>
    </layout>
   </widget>
