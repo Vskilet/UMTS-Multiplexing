@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>962</width>
-    <height>578</height>
+    <width>1033</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>740</x>
      <y>10</y>
-     <width>291</width>
-     <height>301</height>
+     <width>281</width>
+     <height>591</height>
     </rect>
    </property>
    <property name="title">
@@ -30,11 +30,45 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>271</width>
-      <height>261</height>
+      <width>261</width>
+      <height>551</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="9" column="1">
+      <widget class="QLabel" name="LabelTextInterferencesRate">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="LabelErrorRateTitle">
+       <property name="text">
+        <string>Error rate :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0" colspan="2">
+      <widget class="QLabel" name="LabelInterferencesAmplitude">
+       <property name="text">
+        <string>Interferences Amplitude</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0" colspan="2">
+      <widget class="QSlider" name="SliderInterferencesRate">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0" colspan="2">
+      <widget class="QSpinBox" name="SpinInterferencesAmplitude"/>
+     </item>
      <item row="8" column="0">
       <widget class="QPushButton" name="buttonStringSimulation">
        <property name="text">
@@ -111,125 +145,65 @@
        </property>
       </widget>
      </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="LabelInterferencesRate">
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Interferences Rate</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QLabel" name="LabelErrorRate">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="LabelThroughputTitle">
+       <property name="text">
+        <string>Mean throughput (QPSK) :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QLabel" name="LabelThroughput">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>320</y>
-     <width>291</width>
-     <height>128</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="0">
-       <widget class="QLabel" name="LabelInterferencesRate">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>Interferences Rate</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="LabelTextInterferencesRate">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QSlider" name="SliderInterferencesRate">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="LabelInterferencesAmplitude">
-      <property name="text">
-       <string>Interferences Amplitude</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSpinBox" name="SpinInterferencesAmplitude"/>
-    </item>
-   </layout>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>LabelErrorRateTitle</zorder>
   </widget>
   <widget class="QLabel" name="plotLabel">
    <property name="geometry">
     <rect>
-     <x>8</x>
-     <y>77</y>
-     <width>641</width>
-     <height>491</height>
+     <x>10</x>
+     <y>50</y>
+     <width>721</width>
+     <height>541</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>649</x>
-     <y>449</y>
-     <width>291</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="1" column="0">
-     <widget class="QLabel" name="LabelThroughputTitle">
-      <property name="text">
-       <string>Mean throughput (QPSK) :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="LabelErrorRateTitle">
-      <property name="text">
-       <string>Error rate :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="LabelErrorRate">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="LabelThroughput">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QLabel" name="LabelSignal">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>641</width>
-     <height>51</height>
+     <width>701</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
