@@ -12,6 +12,7 @@ global ui
 MOBILE_NUMBER = 5
 listMobile=[]
 signal=[]
+
 def comboboxListener():
     global signal
     global listMobile
@@ -57,7 +58,10 @@ def simulation(mobileNumber):
     signalplot.clear()
     MOBILE_NUMBER=mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
-    signal = generateGlobalSignal(listMobile)
+
+    signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
+
+    ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
     ui.LabelSignal.setText("Signal : " + str(signal) )
     comboBoxGenerate()
     comboboxListener()
