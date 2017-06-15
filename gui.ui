@@ -16,9 +16,9 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>10</y>
-     <width>281</width>
+     <width>351</width>
      <height>591</height>
     </rect>
    </property>
@@ -30,7 +30,7 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>261</width>
+      <width>331</width>
       <height>551</height>
      </rect>
     </property>
@@ -181,17 +181,18 @@
      </item>
     </layout>
    </widget>
-   <zorder>gridLayoutWidget</zorder>
-   <zorder>LabelErrorRateTitle</zorder>
   </widget>
   <widget class="QLabel" name="plotLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>50</y>
-     <width>721</width>
+     <width>631</width>
      <height>541</height>
     </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
    <property name="text">
     <string/>
@@ -208,6 +209,9 @@
    </property>
    <property name="text">
     <string>Signal :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
