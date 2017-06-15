@@ -72,8 +72,7 @@ def simulation(mobileNumber):
     ui.plotLabel.setPixmap(pixmap)
     ui.mobileNumber.setValue(MOBILE_NUMBER)
     ui.mobileNumber.valueChanged.connect(spinnerListener)
-    ui.buttonBitSimulation.clicked.connect(buttonListener)
-    ui.buttonStringSimulation.clicked.connect(buttonStrListener)
+
 
 def simulationSTR(mobileNumber):
     global MOBILE_NUMBER
@@ -91,14 +90,14 @@ def simulationSTR(mobileNumber):
     ui.ComboBoxNumber.activated.connect(comboboxStrListener)
     ui.mobileNumber.setValue(MOBILE_NUMBER)
     ui.mobileNumber.valueChanged.connect(spinnerListener)
-    ui.buttonBitSimulation.clicked.connect(buttonListener)
-    ui.buttonStringSimulation.clicked.connect(buttonStrListener)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = loadUi('gui.ui')
     simulation(MOBILE_NUMBER)
-
+    ui.buttonBitSimulation.clicked.connect(buttonListener)
+    ui.buttonStringSimulation.clicked.connect(buttonStrListener)
     ui.show()
 
     sys.exit(app.exec_())
