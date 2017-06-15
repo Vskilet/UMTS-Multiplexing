@@ -84,6 +84,8 @@ def simulationSTR(mobileNumber):
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 # TODO change 0 and 50 by rate and amplitude of interference
     sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
+    ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
+
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxStrListener)
