@@ -3,11 +3,12 @@ from Mobile import Mobile
 from random import randint
 import binascii
 
-
 MOBILE_NUMBER=130
+
 #convert a number in a string of bits
 def bitToString(a):
     return (bin(a)[2:])
+
 #compute the conjugue of a binary number
 def conjugue(a):
     conj=""
@@ -85,7 +86,6 @@ def sendAscii():
             else:
                 k.received+='1'
 
-
 #add random noises in the signal, the amplitude is a number , and the rate is a percentage(0-100)
 def addRandomNoises(signal, amplitude, rate):
     sig=[]
@@ -94,23 +94,3 @@ def addRandomNoises(signal, amplitude, rate):
             i+=randint(-amplitude,amplitude)
         sig.append(i)
     return sig
-
-#add random noises in the signal, the amplitude is a number , and the rate is a percentage(0-100)
-def addRandomNoises(signal, amplitude, rate):
-    sig=[]
-    for i in signal :
-        if(randint(0,100)<=rate):
-            i+=randint(-amplitude,amplitude)
-        sig.append(i)
-    return sig
-
-
-#signal=generateGlobalSignal()
-#signal=addRandomNoises(signal, 5, 50)
-#print(signal)
-
-#signal=generateGlobalSignal()
-#signal=addRandomNoises(signal, 5, 50)
-#print(signal)
-
-#sendAscii()
