@@ -38,8 +38,10 @@ def buttonListener():
     simulation(MOBILE_NUMBER)
 
 def buttonStrListener():
-    print("###### test ######")
+    #print("###### test ######")
     simulationSTR(MOBILE_NUMBER)
+    comboboxStrListener()
+
 def spinnerListener():
     global MOBILE_NUMBER
     MOBILE_NUMBER = ui.mobileNumber.value()
@@ -70,8 +72,6 @@ def simulation(mobileNumber):
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
     ui.plotLabel.setPixmap(pixmap)
-    ui.mobileNumber.setValue(MOBILE_NUMBER)
-    ui.mobileNumber.valueChanged.connect(spinnerListener)
 
 
 def simulationSTR(mobileNumber):
@@ -84,18 +84,18 @@ def simulationSTR(mobileNumber):
 # TODO change 0 and 50 by rate and amplitude of interference
     sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
     ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
-
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxStrListener)
-    ui.mobileNumber.setValue(MOBILE_NUMBER)
-    ui.mobileNumber.valueChanged.connect(spinnerListener)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = loadUi('gui.ui')
     simulation(MOBILE_NUMBER)
+
+    ui.mobileNumber.setValue(MOBILE_NUMBER)
+    ui.mobileNumber.valueChanged.connect(spinnerListener)
     ui.buttonBitSimulation.clicked.connect(buttonListener)
     ui.buttonStringSimulation.clicked.connect(buttonStrListener)
     ui.show()
