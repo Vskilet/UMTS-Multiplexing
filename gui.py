@@ -46,6 +46,9 @@ def spinnerListener():
     global MOBILE_NUMBER
     MOBILE_NUMBER = ui.mobileNumber.value()
 
+def sliderListener():
+    ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
+
 def comboBoxGenerate():
     global listMobile
     ui.ComboBoxNumber.clear()
@@ -63,7 +66,6 @@ def simulation(mobileNumber):
 
     signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
 
-    ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
     ui.LabelSignal.setText("Signal : " + str(signal) )
     comboBoxGenerate()
     comboboxListener()
@@ -83,7 +85,7 @@ def simulationSTR(mobileNumber):
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 # TODO change 0 and 50 by rate and amplitude of interference
     sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
-    ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
+
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxStrListener)
@@ -98,6 +100,7 @@ if __name__ == "__main__":
     ui.mobileNumber.valueChanged.connect(spinnerListener)
     ui.buttonBitSimulation.clicked.connect(buttonListener)
     ui.buttonStringSimulation.clicked.connect(buttonStrListener)
+    ui.SliderInterferencesRate.valueChanged.connect(sliderListener)
     ui.show()
 
     sys.exit(app.exec_())
