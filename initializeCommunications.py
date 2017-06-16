@@ -94,3 +94,17 @@ def addRandomNoises(signal, amplitude, rate):
             i=i+randint(-amplitude,amplitude)
         sig.append(i)
     return sig
+
+def calculErrorRate(signal, listMobile):
+    nbErrors = 0
+    for i in listMobile :
+        if i.message != demodulateSignal(signal,i):
+            nbErrors += 1
+    return nbErrors
+
+def calculErrorRateStr(signal, listMobile):
+    nbErrors = 0
+    for i in listMobile :
+        if i.ascii != i.unbin():
+            nbErrors += 1
+    return nbErrors

@@ -56,12 +56,11 @@ def comboBoxGenerate():
         # print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
 
-def calculErrorRate(signalNoisy, signalOrigin):
-    nbErrors = 0
-    for i in range(0,len(signalOrigin)) :
-        if signalOrigin[i] != signalNoisy[i] :
-            nbErrors += 1
-    ui.LabelErrorRate.setText(str(nbErrors/len(signalOrigin)))
+def printErrorRate():
+    ui.LabelErrorRate.setText(str(calculErrorRate(signal, listMobile)*100/len(listMobile)))
+
+def printErrorRateStr():
+    ui.LabelErrorRate.setText(str(calculErrorRateStr(signal, listMobile)*100/len(listMobile)))
 
 def simulation(mobileNumber):
     global MOBILE_NUMBER
@@ -72,7 +71,7 @@ def simulation(mobileNumber):
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 
     signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
-    calculErrorRate(signal,generateGlobalSignal(listMobile))
+    printErrorRate()
 
     ui.LabelSignal.setText("Signal : " + str(signal) )
     comboBoxGenerate()
@@ -93,6 +92,8 @@ def simulationSTR(mobileNumber):
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 # TODO change 0 and 50 by rate and amplitude of interference
     sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
+
+    printErrorRateStr()
     ui.plotLabel.clear()
     comboBoxGenerate()
     comboboxListener()
