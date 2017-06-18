@@ -90,7 +90,7 @@ def sendAscii(listMobile,interferenceRate,interferenceAmplitude):
 def addRandomNoises(signal, amplitude, rate):
     sig=[]
     for i in signal :
-        if(randint(0,100)<=rate):
+        if(randint(0,100)<rate):
             i=i+randint(-amplitude,amplitude)
         sig.append(i)
     return sig
