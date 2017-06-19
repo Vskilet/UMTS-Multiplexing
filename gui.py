@@ -2,7 +2,6 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QPixmap, QImage
-from PyQt5 import QtGui
 from initializeCommunications import *
 import signalplot
 
@@ -11,8 +10,9 @@ global listMobile
 global signal
 global ui
 MOBILE_NUMBER = 5
-listMobile=[]
-signal=[]
+listMobile = []
+signal = []
+
 
 def comboboxListener():
     global signal
@@ -20,8 +20,9 @@ def comboboxListener():
     mobile_id = int(ui.ComboBoxNumber.currentText())
     ui.LabelTextOVSF.setText(bin(listMobile[mobile_id].ovsfCode))
     # print(signal)
-    ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal,listMobile[mobile_id])))
+    ui.LabelTextDecodeMessage.setText(str(demodulateSignal(signal, listMobile[mobile_id])))
     ui.LabelTextDesiredMessage.setText(str(listMobile[mobile_id].message))
+
 
 def comboboxStrListener():
     global signal
@@ -35,20 +36,25 @@ def comboboxStrListener():
     except:
         ui.LabelTextDecodeMessage.setText("errors due to noises...")
 
+
 def buttonListener():
     simulation(MOBILE_NUMBER)
 
+
 def buttonStrListener():
-    #print("###### test ######")
+    # print("###### test ######")
     simulationSTR(MOBILE_NUMBER)
     comboboxStrListener()
+
 
 def spinnerListener():
     global MOBILE_NUMBER
     MOBILE_NUMBER = ui.mobileNumber.value()
 
+
 def sliderListener():
     ui.LabelTextInterferencesRate.setText(str(ui.SliderInterferencesRate.value()))
+
 
 def comboBoxGenerate():
     global listMobile
@@ -57,24 +63,28 @@ def comboBoxGenerate():
         # print(mobile)
         ui.ComboBoxNumber.insertItem(0, mobile.identifier)
 
+
 def printErrorRate():
-    ui.LabelErrorRate.setText(str(calculErrorRate(signal, listMobile)*100/len(listMobile)))
+    ui.LabelErrorRate.setText(str(calculErrorRate(signal, listMobile) * 100 / len(listMobile)))
+
 
 def printErrorRateStr():
-    ui.LabelErrorRate.setText(str(calculErrorRateStr(signal, listMobile)*100/len(listMobile)))
+    ui.LabelErrorRate.setText(str(calculErrorRateStr(signal, listMobile) * 100 / len(listMobile)))
+
 
 def simulation(mobileNumber):
     global MOBILE_NUMBER
     global listMobile
     global signal
     signalplot.clear()
-    MOBILE_NUMBER=mobileNumber
+    MOBILE_NUMBER = mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 
-    signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
+    signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(),
+                             ui.SliderInterferencesRate.value())
     printErrorRate()
 
-    ui.LabelSignal.setText("Signal : " + str(signal) )
+    ui.LabelSignal.setText("Signal : " + str(signal))
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxListener)
@@ -82,26 +92,28 @@ def simulation(mobileNumber):
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
     ui.plotLabel.setPixmap(pixmap)
-    codeSize=(len(str(bin(listMobile[0].ovsfCode)))-2)
+    codeSize = (len(str(bin(listMobile[0].ovsfCode))) - 2)
     ui.codeLengthLabel.setText(str(codeSize))
-    ui.LabelThroughput.setText(str(3840/codeSize)+"kbps")
+    ui.LabelThroughput.setText(str(3840 / codeSize) + "kbps")
+
 
 def simulationSTR(mobileNumber):
     global MOBILE_NUMBER
     global listMobile
     global signal
     signalplot.clear()
-    MOBILE_NUMBER=mobileNumber
+    MOBILE_NUMBER = mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
-    sendAscii(listMobile,ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
+    sendAscii(listMobile, ui.SpinInterferencesAmplitude.value(), ui.SliderInterferencesRate.value())
     ui.LabelSignal.setText("")
     printErrorRateStr()
     ui.plotLabel.clear()
     comboBoxGenerate()
     comboboxListener()
-    codeSize=(len(str(bin(listMobile[0].ovsfCode)))-2)
+    codeSize = (len(str(bin(listMobile[0].ovsfCode))) - 2)
     ui.codeLengthLabel.setText(str(codeSize))
-    ui.LabelThroughput.setText(str(3840/codeSize)+"kbps")
+    ui.LabelThroughput.setText(str(3840 / codeSize) + "kbps")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
