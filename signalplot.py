@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import io
 
 
@@ -22,6 +23,11 @@ def plot(signal=[-1, 0, 1]):
 
     plt.ylabel('Amplitude')
     plt.xlabel('Time')
+
+    blue_patch = mpatches.Patch(color='blue', label='Original signal')
+    red_patch = mpatches.Patch(color='red', label='Compromised signal')
+    plt.legend(handles=[blue_patch, red_patch])
+
     plt.savefig("plot.png", format="png", transparent=True)
 
 
