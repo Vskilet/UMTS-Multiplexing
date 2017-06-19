@@ -80,15 +80,17 @@ def simulation(mobileNumber):
     MOBILE_NUMBER = mobileNumber
     listMobile = listMobileGenerator(MOBILE_NUMBER)
 
-    signal = addRandomNoises(generateGlobalSignal(listMobile), ui.SpinInterferencesAmplitude.value(),
+    clean_signal = generateGlobalSignal(listMobile)
+
+    degraded_signal = addRandomNoises(clean_signal, ui.SpinInterferencesAmplitude.value(),
                              ui.SliderInterferencesRate.value())
     printErrorRate()
 
-    ui.LabelSignal.setText("Signal : " + str(signal))
+    ui.LabelSignal.setText("Original signal : " + str(clean_signal) + "\nDegraded signal : " + str(degraded_signal))
     comboBoxGenerate()
     comboboxListener()
     ui.ComboBoxNumber.activated.connect(comboboxListener)
-    signalplot.plot(signal)
+    signalplot.plot(clean_signal, degraded_signal)
     qimg = QImage("plot.png")
     pixmap = QPixmap(qimg)
     ui.plotLabel.setPixmap(pixmap)
