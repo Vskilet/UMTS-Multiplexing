@@ -4,17 +4,33 @@ import matplotlib.patches as mpatches
 
 
 def plot(clean_signal, degraded_signal):
-    
-    current_color = 'b'
-    current_alpha = 1
 
-    for signal in [clean_signal, degraded_signal]:
+    i = 0
 
-        i = 0
+    # -------------- Génération signal propre -------------
 
-        for chip in signal:
-            t = np.arange(i * 2 * np.pi, (i * 2 + 2) * np.pi, 0.01)
+    for chip in clean_signal:
+        t = np.arange(i * 2 * np.pi, (i * 2 + 2) * np.pi, 0.01)
 
+        if chip < 0:
+            s = np.sin(t - np.pi) * abs(chip)
+        elif chip > 0:
+            s = np.sin(t) * abs(chip)
+        else:
+            s = np.zeros_like(t)
+
+        plt.plot(t, s, color='b')
+
+        i += 1
+
+    i = 0
+
+    # -------------- Génération signal dégradé -------------
+
+    for chip in degraded_signal:
+        t = np.arange(i * 2 * np.pi, (i * 2 + 2) * np.pi, 0.01)
+
+        if(chip != clean_signal[i]):
             if chip < 0:
                 s = np.sin(t - np.pi) * abs(chip)
             elif chip > 0:
@@ -22,11 +38,9 @@ def plot(clean_signal, degraded_signal):
             else:
                 s = np.zeros_like(t)
 
-            plt.plot(t, s, color=current_color, alpha=current_alpha)
-            i += 1
-            
-        current_color = 'r'
-        current_alpha = 0.6
+            plt.plot(t, s, color='r', alpha=0.6)
+
+        i += 1
 
     plt.ylabel('Amplitude')
     plt.xlabel('Time')

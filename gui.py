@@ -84,6 +84,7 @@ def simulation(mobileNumber):
 
     degraded_signal = addRandomNoises(clean_signal, ui.SpinInterferencesAmplitude.value(),
                              ui.SliderInterferencesRate.value())
+    signal = degraded_signal
     printErrorRate()
 
     ui.LabelSignal.setText("Original signal : " + str(clean_signal) + "\nDegraded signal : " + str(degraded_signal))
