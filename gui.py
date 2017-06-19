@@ -112,7 +112,9 @@ def simulationSTR(mobileNumber):
     printErrorRateStr()
     ui.plotLabel.clear()
     comboBoxGenerate()
-    comboboxListener()
+    comboboxStrListener()
+    ui.ComboBoxNumber.activated.connect(comboboxStrListener)
+
     codeSize = (len(str(bin(listMobile[0].ovsfCode))) - 2)
     ui.codeLengthLabel.setText(str(codeSize))
     ui.LabelThroughput.setText(str(3840 / codeSize) + "kbps")

@@ -105,6 +105,10 @@ def calculErrorRate(signal, listMobile):
 def calculErrorRateStr(signal, listMobile):
     nbErrors = 0
     for i in listMobile :
-        if i.ascii != i.unbin():
+        try:
+            if i.ascii != i.unbin():
+                nbErrors += 1
+        except Exception:
             nbErrors += 1
+            
     return nbErrors
