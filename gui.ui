@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>cdma-icon.png</normaloff>cdma-icon.png</iconset>
+  </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
@@ -195,8 +199,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>gridLayoutWidget</zorder>
-   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QLabel" name="plotLabel">
    <property name="geometry">
